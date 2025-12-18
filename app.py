@@ -8,7 +8,7 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/api/decision')
+@app.route('/api/decision', methods=["GET", "POST"])
 def accept_week_data():
     print(request.form)
     if "handshake" in request.form and request.form.get("handshake"):
@@ -16,7 +16,7 @@ def accept_week_data():
             "ok": True,
             "student_email": "jomann@taltech.ee",
             "algorithm_name": "JoosepDrinksBeer",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "supports": {"blackbox": True, "glassbox": False},
             "message": "BeerBot ready"
         }
