@@ -1,3 +1,4 @@
+import json
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -11,7 +12,7 @@ def hello_world():  # put application's code here
 @app.route('/api/decision', methods=["GET", "POST"])
 def accept_week_data():
     print(request.form)
-    if "handshake" in request.form and request.form.get("handshake"):
+    if "handshake" in request.form and request.form.get("handshake") is True:
         return {
             "ok": True,
             "student_email": "jomann@taltech.ee",
@@ -20,6 +21,17 @@ def accept_week_data():
             "supports": {"blackbox": True, "glassbox": False},
             "message": "BeerBot ready"
         }
+    if "weeks" in request.form:
+        weeks : list[dict] = json.loads(request.form.get("weeks"))
+        current_week = weeks[-1]
+        orders = {}
+        for role, amounts in current_week['roles']:
+            order = amounts['incoming_orders']
+            orders[role] = order
+        return {
+            "orders": orders
+        }
+
     return {
         "test": True
     }
