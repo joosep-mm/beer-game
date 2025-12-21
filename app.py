@@ -29,7 +29,7 @@ def accept_week_data():
             "ok": True,
             "student_email": "jomann@taltech.ee",
             "algorithm_name": "JoosepDrinksBeer",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "supports": {"blackbox": True, "glassbox": False},
             "message": "BeerBot ready"
         }
@@ -49,7 +49,7 @@ def accept_week_data():
 
             avg_demand = average_demands[role]
             delay = ROLE_DELAY[role]
-            target = avg_demand * delay
+            target = avg_demand * 2
 
             inventory_position = inventory + in_transit - backlog
             random.seed(seed)
