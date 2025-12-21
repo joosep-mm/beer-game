@@ -43,7 +43,6 @@ def accept_week_data():
             demand = amounts['incoming_orders']
             inventory = amounts['inventory']
             backlog = amounts['backlog']
-            arriving = amounts['arriving']
             in_transit = sum(amounts['in_transit'])
 
             delay = ROLE_DELAY[role]
